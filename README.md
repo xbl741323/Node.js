@@ -1,8 +1,4 @@
-﻿# Node.js 第1天
-
-## 上午总结
-
-- Node.js 是什么
+﻿- Node.js 是什么
   + JavaScript 的运行环境
   + 既不是语言，也不是框架，它是一个平台
 - Node.js 中的 JavaScript
