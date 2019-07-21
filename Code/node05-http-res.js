@@ -11,6 +11,9 @@ server.on('request', function (request,response) {
     // write 可以使用多次，但是最后一定要使用 end 来结束响应，否则客户端会一直等待
     response.write('hello')
     response.end() //告诉客户端，我的话说完了，你可以呈递给用户了
+    //由于我们的服务器能力还非常的弱，无论是什么请求，都只能响应 hello 
+    //思考：我们希望当请求不同的路径的时候回响应不同的结果
+    //例如：/ index /login 登陆 /register 注册 ...
 })
 
 server.listen(3300, function () {
