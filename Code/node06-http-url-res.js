@@ -17,12 +17,31 @@ server.on('request', function (req, res) {
     //     也就是说所有的 url 都是以 / 开头的
     // 2.判断路径处理结果
     var url = req.url
-    if (url === '/') {
-        res.end("index page")
-    } else if (url === "/login") {
-        res.end("login page")
-    } else {
-        res.end("404 Not Found")
+    // if (url === '/') {
+    //     res.end("index page")
+    // } else if (url === "/login") {
+    //     res.end("login page")
+    // } else {
+    //     res.end("404 Not Found")
+    // }
+    if(url === '/products'){
+        var products = [
+            {
+                name:'苹果',
+                price:8888
+            },
+            {
+                name:'vivo',
+                price:3300
+            },
+            {
+                name:'oppo',
+                price:3300
+            }
+        ]
+        // 响应的内容只能是二进制数据或者字符串
+        // 数字 对象 数组 布尔值
+        res.end(JSON.stringify(products))
     }
 
 })
