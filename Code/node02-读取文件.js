@@ -7,7 +7,7 @@
 //例如： fs.readFile 就是用来读取文件的
 
 //1.使用 require 方法加载 fs 核心模块
-var fs = require('fs')
+var fs = require('fs')//前面的 fs 可以自定义，后面括号里的必须这样写
 
 //2.读取文件
 // 第一个参数就是要读取的文件路径
