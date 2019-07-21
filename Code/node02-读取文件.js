@@ -13,7 +13,7 @@ var fs = require('fs')
 // 第一个参数就是要读取的文件路径
 // 第二个参数是一个回调函数
 //    读取文件成功  data 数据  error null
-//    读取文件失败  data null  error 错误对象
+//    读取文件失败  data undefined没有数据  error 错误对象
 fs.readFile('./data/hello.txt', function (error, data) {
     //<Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64 21>
     //文件中默认存储的是二进制数据 0 1
@@ -21,5 +21,9 @@ fs.readFile('./data/hello.txt', function (error, data) {
     //无论是二进制还是十六进制，人类都不认识
     //所以我们可以通过 toString 方法把其转化成我们能认识的字符
     // console.log(data)
-    console.log(data.toString())
+    if (error) {
+        console.log("文件读取失败：" + error)
+        return true
+    }
+    console.log("文件读取成功：" + data.toString())
 })
