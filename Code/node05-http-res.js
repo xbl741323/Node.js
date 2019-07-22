@@ -7,6 +7,7 @@ var server = http.createServer()
 //   response 响应对象：可以用来给客户端发送响应消息
 server.on('request', function (request,response) {
     console.log('收到客户端的请求了！请求路径是：'+request.url)
+    console.log("请求我的客户端的ip地址是：" + request.socket.remoteAddress+"请求我的客户端的端口号是："+request.socket.remotePort)
     // response 对象有一个方法：write 可以用来给客户端发送响应数据
     // write 可以使用多次，但是最后一定要使用 end 来结束响应，否则客户端会一直等待
     response.write('hello')
