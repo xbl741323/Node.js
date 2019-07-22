@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="node_modules/art-template/lib/template-web.js"></script>
+</head>
+<!-- 
+    强调：模板引擎不关心你的字符串内容，只关心自己能认识的模板标记语言，例如{{}}
+    {{}} 语法被称为 mustache 语法，八字胡语法
+-->
+<body style="background-color: #fff">
+    <script type="text/template" id="tpl">
+    <p> 姓名 {{ name }} </p>
+    <p> 年龄 {{ age }} </p>
+    <p> 地址 {{ provice }} </p>
+    <p> 爱好 {{each hobbies}} {{ $value }} {{/each}} </p>
+    </script>
+    <script>
+        var ret = template('tpl', {
+            name: 'tom',
+            age: 18,
+            provice: '安徽',
+            hobbies: [
+                '写代码',
+                '看动漫',
+                '看电影',
+                '吃'
+            ]
+        })
+        console.log(ret)
+    </script>
+</body>
+
+</html>
