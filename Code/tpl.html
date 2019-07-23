@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <p> 姓名 {{ name }} </p>
+    <p> 年龄 {{ age }} </p>
+    <p> 地址 {{ provice }} </p>
+    <p> 爱好 {{each hobbies}} {{ $value }} {{/each}} </p>
+    <script>
+         var foo = '{{ title }}'
+    </script>
+</body>
+</html>
