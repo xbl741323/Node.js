@@ -8,6 +8,8 @@
 
 var out = require("./b")
 
-console.log(out.foo) // 获得 foo 并输出其值
+// console.log(out.foo) // 获得 foo 并输出其值
 
-console.log(out.add(1,2)) // 获得 add 方法并调用
+// console.log(out.add(1,2)) // 获得 add 方法并调用
+
+console.log(out)
