@@ -1,0 +1,16 @@
+{
+    "students":[
+    {"id":1,"name":"张三","gender":0,"age":18,"hobbies":"玩游戏，敲代码"},
+    {"id":1,"name":"张三","gender":0,"age":18,"hobbies":"玩游戏，敲代码"},
+    {"id":1,"name":"张三","gender":0,"age":18,"hobbies":"玩游戏，敲代码"},
+    {"id":1,"name":"张三","gender":0,"age":18,"hobbies":"玩游戏，敲代码"},
+    {"id":1,"name":"张三","gender":0,"age":18,"hobbies":"玩游戏，敲代码"},
+    {"id":1,"name":"张三","gender":0,"age":18,"hobbies":"玩游戏，敲代码"}
+    ],
+    "fruits": [
+        "香蕉",
+        "苹果",
+        "橘子",
+        "菠萝"
+    ]
+}

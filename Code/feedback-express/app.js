@@ -4,7 +4,7 @@ var app = express()
 app.use('/public/', express.static('./public/'))
 // 配置使用 art-template 模板引擎
 app.engine('html', require('express-art-template'))
-
+// 配置 body-parser 中间件（插件，专门用来解析表单 POST 请求体）
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -72,6 +72,9 @@ app.post('/pinglun', function (req, res) {
     comment.dateTime = date.getFullYear() + "-" + parseInt(date.getMonth() + 1) + "-" + date.getDay()
     comments.unshift(comment)
     res.redirect('/') // express 封装的重定向方法
+    // res.send()
+    // res.redirect('/') 
+    // 这些方法 Express 会自动结束响应
 })
 // app.get('/pinglun', function (req, res) {
 //     var comment = req.query 
