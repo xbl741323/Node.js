@@ -31,3 +31,5 @@ app.use(router) //把路由容器挂载到 app.js 服务中
 app.listen(3300, function () {
     console.log('Server is running ...')
 })
+
+module.exports = app

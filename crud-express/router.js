@@ -9,7 +9,7 @@
  */
 
 var fs = require('fs')
-
+var student = require('./student')
 // Express 提供了一种更好的方式
 // 专门用来包装路由的
 var express = require('express')
@@ -20,22 +20,39 @@ var router = express.Router()
 router.get('/students', function (req, res) {
     // readFile第二个参数是可选的，可以把读取到的文件按照 utf8 的编码格式输出字符串
     // 当然你也可以通过 toString()方法来转换成字符串
-    fs.readFile('./db.json', 'utf8', function (err, data) {
+    // fs.readFile('./db.json', 'utf8', function (err, data) {
+    //     if (err) {
+    //         return res.status(500).send('Server error')
+    //     }
+    //     var fruits = JSON.parse(data).fruits // 将字符串转换成 JSON 对象
+    //     var students = JSON.parse(data).students // 将字符串转换成 JSON 对象
+    //     res.render('index.html', {
+    //         fruits: fruits,
+    //         students: students
+    //     })
+
+    // })
+    student.find(function (err, students) {
         if (err) {
             return res.status(500).send('Server error')
         }
-        var fruits = JSON.parse(data).fruits // 将字符串转换成 JSON 对象
-        var students = JSON.parse(data).students // 将字符串转换成 JSON 对象
         res.render('index.html', {
-            fruits: fruits,
+            fruits: [
+                "香蕉",
+                "苹果",
+                "橘子",
+                "菠萝"
+            ],
             students: students
         })
 
     })
 })
+
 router.get('/students/new', function (req, res) {
     res.render('new.html')
 })
+
 router.post('/students/new', function (req, res) {
     // 1. 获取表单数据
     // 2. 处理
@@ -45,20 +62,47 @@ router.post('/students/new', function (req, res) {
     // 然后往对象中 push 数据
     // 然后把对象转为字符串
     // 然后把字符再次写入文件
-
+    student.save(req.body, function (err) {
+        if (err) {
+            return res.status(500).send('Server error')
+        }
+    })
+    res.redirect('/students')
 })
+
 router.get('/students/edit', function (req, res) {
+    student.findStudentById(parseInt(req.query.id), function (err, stu) {
+        if (err) {
+            return res.status(500).send('Server error')
+        }
+        res.render('edit.html', {
+            student: stu
+        })
 
+    })
 })
+
 router.post('/students/edit', function (req, res) {
-
+    student.updateById(req.body, function (err) {
+        if (err) {
+            return res.status(500).send('Server error')
+        }
+    })
+    res.redirect('/students')
 })
-router.get('/students/delete', function (req, res) {
 
+router.get('/students/delete', function (req, res) {
+    student.deleteById(parseInt(req.query.id),function(err){
+        if (err) {
+            return res.status(500).send('Server error')
+        }
+    })
+    res.redirect('/students')
 })
 
 // 3. 把 router 导出
 module.exports = router
+
 
 
 
