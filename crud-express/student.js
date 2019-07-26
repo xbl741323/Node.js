@@ -24,6 +24,7 @@ exports.find = function (callback) {
 /**
 *  添加保存学生
 */
+
 exports.save = function (student, callback) {
     fs.readFile(dbPath, 'utf8', function (err, data) {
         if (err) {
@@ -52,6 +53,7 @@ exports.save = function (student, callback) {
 /**
 *  更新学生
 */
+
 exports.updateById = function (student, callback) {
     fs.readFile(dbPath, 'utf8', function (err, data) {
         if (err) {
@@ -90,6 +92,7 @@ exports.updateById = function (student, callback) {
 /**
 *  删除学生
 */
+
 exports.deleteById = function (id, callback) {
     fs.readFile(dbPath, 'utf8', function (err, data) {
         if (err) {
@@ -118,6 +121,7 @@ exports.deleteById = function (id, callback) {
 /**
 * 根据 id 查找学生
 */
+
 exports.findStudentById = function (id, callback) {
     fs.readFile(dbPath, 'utf8', function (err, data) {
         if (err) {
