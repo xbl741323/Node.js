@@ -8,10 +8,8 @@
  */
 var fs = require('fs')
 var dbPath = './db.json'
-/**
- *  获取所有学生列表
- * return []
- */
+
+// 获取所有学生信息列表，return []
 exports.find = function (callback) {
     fs.readFile(dbPath, 'utf8', function (err, data) {
         if (err) {
@@ -21,10 +19,7 @@ exports.find = function (callback) {
     })
 }
 
-/**
-*  添加保存学生
-*/
-
+// 添加保存学生信息
 exports.save = function (student, callback) {
     fs.readFile(dbPath, 'utf8', function (err, data) {
         if (err) {
@@ -50,10 +45,7 @@ exports.save = function (student, callback) {
     })
 }
 
-/**
-*  更新学生
-*/
-
+// 更新学生信息
 exports.updateById = function (student, callback) {
     fs.readFile(dbPath, 'utf8', function (err, data) {
         if (err) {
@@ -89,10 +81,7 @@ exports.updateById = function (student, callback) {
     })
 }
 
-/**
-*  删除学生
-*/
-
+// 删除学生信息
 exports.deleteById = function (id, callback) {
     fs.readFile(dbPath, 'utf8', function (err, data) {
         if (err) {
@@ -118,10 +107,7 @@ exports.deleteById = function (id, callback) {
     })
 }
 
-/**
-* 根据 id 查找学生
-*/
-
+// 根据 id 查找学生信息
 exports.findStudentById = function (id, callback) {
     fs.readFile(dbPath, 'utf8', function (err, data) {
         if (err) {
