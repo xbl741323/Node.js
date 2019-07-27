@@ -48,6 +48,11 @@ router.post('/students/new', function (req, res) {
     res.redirect('/students')
 })
 
+// replace
+//      字符串模式
+//           简单，但是不支持全局和忽略大小写问题
+//      正则表达式
+//           强大，支持全局和忽略大小写问题
 router.get('/students/edit', function (req, res) {
     Student.findById((req.query.id).replace(/"/g, ''), function (err, stu) {
         if (err) {
@@ -61,7 +66,7 @@ router.get('/students/edit', function (req, res) {
 })
 
 router.post('/students/edit', function (req, res) {
-    var id = (req.body.id).replace(/"/g, '')
+    var id = (req.body.id).replace(/"/g, '') // 注意: 这里可以不加 .replace(/"/g, '') ，因为你前端页面就是 $value.id,如果你前端页面是 $value._id,那么你就需要加了
     Student.findByIdAndUpdate(id, req.body, function (err) {
         if (err) {
             return res.status(500).send('Server error')
