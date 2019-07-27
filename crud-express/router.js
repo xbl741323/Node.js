@@ -9,7 +9,7 @@
  */
 
 var fs = require('fs')
-var student = require('./student')
+var student = require('./student-fs')
 // Express 提供了一种更好的方式
 // 专门用来包装路由的
 var express = require('express')

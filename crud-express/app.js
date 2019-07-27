@@ -11,7 +11,8 @@
  */
 
 var express = require('express')
-var router = require('./router.js') // 导入 router.js 文件
+// var router = require('./router.js') // 导入 router.js 文件
+var router = require('./router-db.js') // 导入 router-db.js 文件
 var bodyParser = require('body-parser')
 var app = express()
 
