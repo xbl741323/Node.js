@@ -33,7 +33,7 @@ p1.then(function (data) {
     // 当前函数中 return 的结果就可以在后面的 then 中的 function 中接收到，后面的以此类推
     return p2
 }, function (err) {
-    console.log("读取文件失败！")
+    console.log("读取文件失败！") 
 }).then(function (data) {
     console.log(data)
     return p3
