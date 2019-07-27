@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // 连接 MongoDB 数据库
-mongoose.connect('mongodb://localhost/itcast');
+mongoose.connect('mongodb://localhost/itcast', { useNewUrlParser: true });
 
 // 创建一个模型
 // 设计数据库
@@ -9,8 +9,10 @@ mongoose.connect('mongodb://localhost/itcast');
 // mongoose 这个包就可以让你的设计编写过程变得非常简单
 const Cat = mongoose.model('Cat', { name: String });
 
-// 实例化一个 Cat
-const kitty = new Cat({ name: 'Zildjian' });
+for (var i = 0; i < 10; i++) {
+    // 实例化一个 Cat
+    const kitty = new Cat({ name: '喵喵1' });
 
-// 持久化保存 kitty 实例
-kitty.save().then(() => console.log('meow'));
+    // 持久化保存 kitty 实例
+    kitty.save().then(() => console.log('meow'));
+}
