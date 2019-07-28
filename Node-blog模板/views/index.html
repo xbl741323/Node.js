@@ -1,0 +1,19 @@
+{{extend './layout.html'}}
+
+{{ block 'head'}}
+<style type="text/css">
+     .q{
+         color: brown;
+     }
+</style>
+{{/block}}
+
+{{block 'container'}}
+<h1 class="q">你好</h1>
+{{/block}}
+
+{{ block 'script'}}
+   <script>
+      alert("qwq")
+   </script>
+{{/block}}
