@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise封装ajax方法</title>
+    <script src="/node_modules/art-template/lib/template-web.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+</head>
+
+<body style="background-color: #fff">
+    <form action="" id="tep">
+
+    </form>
+    <script type="text/template" id="tpl">
+            <div>
+                <label>name:</label>
+                <input type="text" value="{{ users.name }}">
+            </div>
+            <div>
+                <label>age:</label>
+                <input type="text" value="{{ users.age }}">
+            </div>
+            <div>
+                <label>jop:</label>
+                <select>
+                        <option value="{{ jobs.id }}" selected>{{ jobs.name }}</option> 
+                </select>
+            </div>
+    </script>
+    <script>
+        var data = []
+        get('http://localhost:3000/users/3').then(function (usersdata) {
+            data.users = usersdata
+            return get('http://localhost:3000/jobs/3')
+        }).then(function (jobsdata) {
+            data.jobs = jobsdata
+            var htmlStr = template('tpl', data)
+            $('#tep').html(htmlStr)
+        })
+
+        function get(url) {
+            return new Promise(function (resolve, reject) {
+                var oReq = new XMLHttpRequest()
+                oReq.onload = function () {
+                    resolve(JSON.parse(oReq.responseText))
+                }
+                oReq.onerror = function (err) {
+                    reject(err)
+                }
+                oReq.open("get", url, true)
+                oReq.send()
+            })
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模板引擎中的回调</title>
+    <script src="/node_modules/art-template/lib/template-web.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+</head>
+
+<body style="background-color: #fff">
+    <form action="" id="tep">
+
+    </form>
+    <script type="text/template" id="tpl">
+            <div>
+                <label>name:</label>
+                <input type="text" value="{{ users.name }}">
+            </div>
+            <div>
+                <label>age:</label>
+                <input type="text" value="{{ users.age }}">
+            </div>
+            <div>
+                <label>jop:</label>
+                <select>
+                        <option value="{{ jobs.id }}" selected>{{ jobs.name }}</option> 
+                </select>
+            </div>
+    </script>
+    <script>
+        get('http://localhost:3000/users/3', function (usersdata) {
+            get('http://localhost:3000/jobs/3', function (jobsdata) {
+                var htmlStr = template('tpl', {
+                    users: JSON.parse(usersdata),
+                    jobs: JSON.parse(jobsdata)
+                })
+                console.log(htmlStr)
+                document.querySelector('#tep').innerHTML = htmlStr
+            })
+        })
+
+        function get(url, callback) {
+            var oReq = new XMLHttpRequest()
+            oReq.onload = function () {
+                callback(oReq.responseText)
+            }
+            oReq.open("get", url, true)
+            oReq.send()
+        }
+    </script>
+
+</body>
+
+</html>
