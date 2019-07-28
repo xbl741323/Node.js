@@ -1,6 +1,9 @@
 ﻿## 先导
 
 ### Node.js 完整参考笔记链接 https://nodejs.lipengzhou.com/
+
+### ES6 参考文档链接 http://es6.ruanyifeng.com/#docs/promise
+
 - Node.js 是什么
   + JavaScript 的运行环境
   + 既不是语言，也不是框架，它是一个平台

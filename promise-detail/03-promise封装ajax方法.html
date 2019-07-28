@@ -54,6 +54,22 @@
                 oReq.send()
             })
         }
+
+         // 这样写，既可以采用callback的形式获得内部数据，又可以解决回调地狱问题（一般没必要这么写）
+        // function get(url, callback) { 
+        //     return new Promise(function (resolve, reject) {
+        //         var oReq = new XMLHttpRequest()
+        //         oReq.onload = function () {
+        //             callback && callback(JSON.parse(oReq.responseText))
+        //             resolve(JSON.parse(oReq.responseText))
+        //         }
+        //         oReq.onerror = function (err) {
+        //             reject(err)
+        //         }
+        //         oReq.open("get", url, true)
+        //         oReq.send()
+        //     })
+        // }
     </script>
 
 </body>

@@ -23,8 +23,14 @@ var userSchema = new Schema({
 var User = mongoose.model('User', userSchema)
 
 // 4. 查询 users 表中的数据
-User.find(function (err, data) {
-    if (err) return console.error(err);
+// User.find(function (err, data) {
+//     if (err) return console.error(err);
+//     console.log("查询成功！" + data);
+// })
+
+
+// 用 promise 方式的封装 Mongoose 中的 find 方法
+User.find().then(function (data) { 
     console.log("查询成功！" + data);
 })
 
